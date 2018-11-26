@@ -58,9 +58,23 @@ class Fusee {
       randomd = (int)random(3);
     }
 
+  if (end != true) {
+    if (mouseX > FuseX){
+      FuseX += 10;
+    }
+    if (mouseX < FuseX){
+      FuseX -= 10;
+    }
+    if (mouseY > FuseY){
+      FuseY += 10;
+    }
+    if (mouseY < FuseY){
+      FuseY -= 10;
+    }
+  }
 
     // Controls
-    if (end != true) {
+    /*if (end != true) {
       if (haut == true && FuseY > 500) {
         FuseY -= 10;
         deplaFuse = 8;
@@ -80,6 +94,6 @@ class Fusee {
         FuseX += 10;
         deplaFuse = 6;
       }
-    }
+    }*/
   }
 }

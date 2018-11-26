@@ -224,7 +224,7 @@ void draw() {
     rectMode(CENTER);
 
     // Pas de curseur
-    noCursor();
+    //noCursor();
 
     // Creation des halos
     c1.dessinerCercle();  
