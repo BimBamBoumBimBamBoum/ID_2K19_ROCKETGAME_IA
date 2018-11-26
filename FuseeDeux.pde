@@ -16,7 +16,7 @@ class FuseeDeux {
   //Méthodes
   FuseeDeux() {
     FuseXDeux = 0+width/4*1;
-    FuseYDeux = 900;
+    FuseYDeux = height - 100;
     tirX = FuseXDeux;
     tirY = FuseYDeux;
     fuseDeux.disableStyle();

@@ -17,7 +17,7 @@ class Fusee {
   //Méthodes
   Fusee() {
     FuseX = 0+width/4*3;
-    FuseY = 900;
+    FuseY = height - 100;
     tirX = FuseX;
     tirY = FuseY;
     fuse.disableStyle();
