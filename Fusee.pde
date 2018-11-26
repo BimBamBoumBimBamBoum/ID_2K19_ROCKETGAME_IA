@@ -7,6 +7,10 @@ class Fusee {
   PShape etind;
 
   float taille;
+  
+  
+  int FuseX;
+  int FuseY;
 
 
 
@@ -16,8 +20,8 @@ class Fusee {
 
   //Méthodes
   Fusee() {
-    FuseX = 0+width/4*3;
-    FuseY = height - 100;
+    FuseX=0;
+    FuseY=0;
     tirX = FuseX;
     tirY = FuseY;
     fuse.disableStyle();
@@ -28,7 +32,7 @@ class Fusee {
     etind = fuse.getChild("Etincelle_D");
   }
 
-  void dessinerFusee() {    
+  void dessinerFusee(int FuseX,int FuseY) {    
 
     random = (int)random(4);
     randomd = (int)random(4);
@@ -60,26 +64,6 @@ class Fusee {
 
 
     // Controls
-    if (end != true) {
-      if (haut == true && FuseY > 500) {
-        FuseY -= 10;
-        deplaFuse = 8;
-      }
-
-      if (bas == true && FuseY < height-50) {
-        FuseY += 10;
-        deplaFuse = 2;
-      }
-
-      if (gauche == true && FuseX > 50) {
-        FuseX -= 10;
-        deplaFuse = 4;
-      }
-
-      if (droite == true && FuseX < width-50) {
-        FuseX += 10;
-        deplaFuse = 6;
-      }
-    }
+    
   }
 }

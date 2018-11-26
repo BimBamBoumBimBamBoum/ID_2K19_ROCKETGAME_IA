@@ -1,5 +1,5 @@
 Fusee c2;
-FuseeDeux c5;
+Fusee c5;
 cercle c1;
 Etoiles c3;
 Logo c6;
@@ -53,6 +53,9 @@ int maxScore = 10;
 int maxScoreDeux = 10;
 
 int scoreDeux = 0;
+
+int postirX=25;
+int postirY=25;
 
 float tirX;
 float tirY;
@@ -156,7 +159,7 @@ void setup() {
   //Initialisation
   c1 = new cercle();
   c2 = new Fusee();
-  c5 = new FuseeDeux();
+  c5 = new Fusee();
   c6 = new Logo();
   //c4 = new Planet("Lune.svg", random(50, 450), -150, 1);
 
@@ -170,6 +173,12 @@ void setup() {
     lalunetombe[i] = new Planet("Lune.svg", random(50, (width-50)), random(0, -500), 1);
   }
 
+
+  c2.FuseX=0+width/4*1;
+  c2.FuseY=height - 100;
+  c2.dessinerFusee(c2.FuseX,c2.FuseY);
+  c5.dessinerFusee(0+width/4*3,height - 100);
+  
   //lalunetombe[1] = new Planet("Espace.svg",50,0,24);
 
 
@@ -178,14 +187,17 @@ void setup() {
   } 
 
   for (int i = 0; i< tirletsgo.length; i++) {
-    tirletsgo[i] = new Tir("tir.svg", 0, testPos, 5);
-    testPos = Ytir - 1;
+    tirletsgo[i] = new Tir("tir.svg");
+    tirletsgo[i].Xtir=c2.FuseX;
+    tirletsgo[i].Ytir=c2.FuseY;
+    tirletsgo[i].dessinerTir();
   }
 
   for (int i = 0; i< tirletsgoDeux.length; i++) {
-    tirletsgoDeux[i] = new TirDeux("tir.svg", 0, testPosDeux, 5);
+    tirletsgoDeux[i] = new TirDeux("tir.svg", c2.FuseX, c2.FuseY,5);
     testPosDeux = YtirDeux - 1;
   }
+
   
 }
 
@@ -280,21 +292,21 @@ void draw() {
     }
 
     for (int m = 0; m < tirletsgo.length; m++) {
-
-      tirletsgo[m].animTir();
       tirletsgo[m].dessinerTir();
-    }
-
+      tirletsgo[m].animTir();
+      if(tirletsgo[m].Ytir<0){
+        tirletsgo[m].Ytir=c2.FuseY;
+        tirletsgo[m].Xtir=c2.FuseX;
+      }
+    };
     for (int m = 0; m < tirletsgoDeux.length; m++) {
-
       tirletsgoDeux[m].animTirDeux();
       tirletsgoDeux[m].dessinerTirDeux();
     }
 
     // Affichage de la fusee
-    c2.dessinerFusee();
-
-    c5.dessinerFuseeDeux();
+    c2.dessinerFusee(c2.FuseX,c2.FuseY);
+    c5.dessinerFusee(0+width/4*3,height - 100);
     
     c6.dessinerLogo();
     c6.animerLogo();
@@ -329,68 +341,19 @@ void mousePressed() {
   }
 }
 
-void keyPressed() {
-  switch(key) {
-  case 'z':
-    hautDeux = true;
-    break;
-  case 's':
-    basDeux = true;
-    break;
-  case 'q':
-    gaucheDeux = true;
-    break;
-  case 'd':
-    droiteDeux = true;
-    break;
-  }
-
-  switch(keyCode) {
-  case UP:
-    haut = true;
-    break;
-  case DOWN:
-    bas = true;
-    break;
-  case LEFT:
-    gauche = true;
-    break;
-  case RIGHT:
-    droite = true;
-    break;
-  }
-}
-
-void keyReleased() {
-  switch(key) {
-  case 'z':
-    hautDeux = false;
-    break;
-  case 's':
-    basDeux = false;
-    break;
-  case 'q':
-    gaucheDeux = false;
-    break;
-  case 'd':
-    droiteDeux = false;
-    break;
-  }
-
-  switch(keyCode) {
-  case UP:
-    haut = false;
-    break;
-  case DOWN:
-    bas = false;
-    break;
-  case LEFT:
-    gauche = false;
-    break;
-  case RIGHT:
-    droite = false;
-    break;
-  }
+void mouseMoved(){
+  if (mouseX > c2.FuseX && c2.FuseX < width-50){
+      c2.FuseX += 10;
+    }
+    if (mouseX < c2.FuseX && c2.FuseX > 50){
+      c2.FuseX -= 10;
+    }
+    if (mouseY > c2.FuseY && c2.FuseY < height-50){
+      c2.FuseY += 10;
+    }
+    if (mouseY < c2.FuseY && c2.FuseY > 500){
+      c2.FuseY -= 10;
+    }
 }
 
 void stop() {

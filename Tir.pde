@@ -1,40 +1,25 @@
 class Tir {
-
-
   PShape imaTir;
-  float Ztir;
+  int Xtir;
+  int Ytir;
 
-  PShape TirBoum = loadShape("tir.svg");
+  Tir(String fichier_tir) {
+  imaTir = loadShape(fichier_tir);
+  Xtir=0;
+  Ytir=0;
 
-  Tir(String fichier_tir, float tirX, float tirY, float tirZ) {
-    imaTir = loadShape(fichier_tir);
-    Xtir = tirX;
-    Ytir = tirY;
-    Ztir =  tirZ;
-    Xtir = FuseX;
   }
 
   void dessinerTir() {
-
-    //tirY = FuseY;
     shape(imaTir, Xtir, Ytir, imaTir.getWidth(), imaTir.getHeight());
-    Ytir = Ytir - 70;
-    
-    /*tirletsgo = (Tir[]) append(tirletsgo, new Tir("tir.svg", 0, testPosDeux, 5));*/
   }
 
   void animTir() {
-    
-    if (Ytir <= (-5)) {
-      Xtir = 500000;
-    }
-
+    Ytir=Ytir-30;
     if ( Ytir <= (FuseY-height)) {
-      Ytir = FuseY;
-      Xtir = FuseX;
       ooh.rewind();
       //Xsmo = random(0,width);
-      //translate(random(0, width), 5);
+      //translate(random(int Xtir,0, width), 5);
     } else
     {
       if (song.isPlaying() == false) {
@@ -42,4 +27,5 @@ class Tir {
       }
     }
   }
+ 
 }
