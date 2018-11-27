@@ -158,7 +158,10 @@ void setup() {
   c2.FuseX=0+width/4*1;
   c2.FuseY=height - 100;
   c2.dessinerFusee(c2.FuseX,c2.FuseY);
-  c5.dessinerFusee(0+width/4*3,height - 100);
+  
+  c5.FuseX=0+width/4*3;
+  c5.FuseY=height - 100;
+  c5.dessinerFusee(c5.FuseX, c5.FuseY);
 
   for (int i = 0; i< smokesmoke.length; i++) {
     smokesmoke[i] = new Smoke("Espace.svg", random(0, width), random(0, height), 1);
@@ -268,7 +271,9 @@ void draw() {
     // Affichage de la fusee
     c2.dessinerFusee(c2.FuseX,c2.FuseY);
     c2.animFusee();
-    c5.dessinerFusee(0+width/4*3,height - 100);
+    
+    c5.dessinerFusee(c5.FuseX, c5.FuseY);
+
     
     c6.dessinerLogo();
     c6.animerLogo();
