@@ -38,10 +38,6 @@ class Fusee {
     randomd = (int)random(4);
     randomc = (int)random(4);
 
-    // Affiche un tir et le fait se deplacer en y
-    //shape(tir, tirX, tirY, tir.getWidth(), tir.getHeight());
-    //tirY = tirY - 15;
-
     // Affichage fusee
     fill(223, 12, 27);
     shape(corps, FuseX, FuseY, taille*fuse.getWidth(), taille*fuse.getHeight());
@@ -60,10 +56,29 @@ class Fusee {
       shape(etind, FuseX, FuseY, taille*fuse.getWidth(), taille*fuse.getHeight());
     } else {
       randomd = (int)random(3);
+    }  
+  }
+  
+  
+  
+  // Correction deplacements 
+  void animFusee() { 
+
+   if (mouseX > c2.FuseX && c2.FuseX < width-50){
+      //droite = true;
+      c2.FuseX += 10;
     }
-
-
-    // Controls
-    
+    if (mouseX < c2.FuseX && c2.FuseX > 50){
+      //gauche = true;
+      c2.FuseX -= 10;
+    }
+    if (mouseY > c2.FuseY && c2.FuseY < height-50){
+      //bas = true;
+      c2.FuseY += 10;
+    }
+    if (mouseY < c2.FuseY && c2.FuseY > 500){
+      //haut = true;
+      c2.FuseY -= 10;
+    }
   }
 }

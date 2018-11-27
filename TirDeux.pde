@@ -40,14 +40,14 @@ class TirDeux {
     if ( YtirDeux <= (FuseYDeux-height)) {
       YtirDeux = FuseYDeux;
       XtirDeux = FuseXDeux;
-      aah.rewind();
+      //aah.rewind();
       //Xsmo = random(0,width);
       //translate(random(0, width), 5);
     } else
     {
-      if (song.isPlaying() == false) {
-        aah.play();
-      }
+      //if (song.isPlaying() == false) {
+        //aah.play();
+      //}
     }
   }
 }

@@ -33,9 +33,9 @@ class Planet {
       Xplanet = random(50, (width-50));
       Yplanet = -200;
       Xtir = 5000;
-      scoreDeux++;
-      Boum.play();
-      Boum.rewind();
+      score++;
+      //Boum.play();
+      //Boum.rewind();
     }
 
     if (YtirDeux <= (Yplanet)+50 && YtirDeux >= (Yplanet)-50 && XtirDeux <= (Xplanet)+50 && XtirDeux >= (Xplanet)-50) {
@@ -80,25 +80,25 @@ class Planet {
 
     if (Yplanet >= 100) {
 
-      if (  Xplanet >= (FuseXDeux+50) ) {
-        if (FuseXDeux < width-50) {
-          FuseXDeux = FuseXDeux + 10;
+      if (  Xplanet >= (c5.FuseX+50) ) {
+        if (c5.FuseX < width-50) {
+          c5.FuseX += 10;
         }
       }
 
 
-      if ( Xplanet <= (FuseXDeux-50)) {
-        if (FuseXDeux > 50) {
-          FuseXDeux = FuseXDeux - 10;
+      if ( Xplanet <= (c5.FuseX-50)) {
+        if (c5.FuseX > 50) {
+          c5.FuseX -= 10;
         }
       }
 
-      if ( Yplanet >= (FuseYDeux-50)) {
-        if (  Xplanet >= FuseXDeux ) {
-          FuseXDeux = FuseXDeux - 10;
+      if ( Yplanet >= (c5.FuseY-50)) {
+        if (  Xplanet >= c5.FuseX ) {
+          c5.FuseX -= 10;
         }
-        if (  Xplanet <= FuseXDeux ) {
-          FuseXDeux = FuseXDeux + 10;
+        if (  Xplanet <= c5.FuseX ) {
+          c5.FuseX += 10;
         }
       }
 
@@ -142,27 +142,23 @@ class Planet {
     // si variable boolean vrai alors pousse
     // variable si 0.25s passe a se deplacer dans x direction
 
-    if (deplaFuse == 4) {
       
-      if (FuseX + 22 >= FuseXDeux - 22 && FuseX - 22 <= FuseXDeux + 22 && FuseY - 50 > FuseYDeux && FuseY -50 <= FuseYDeux +50) {
-      FuseY = FuseY + 20;  
-      FuseYDeux = FuseYDeux - 50;
+      if (c2.FuseX + 22 >= c5.FuseX - 22 && c2.FuseX - 22 <= c5.FuseX + 22 && c2.FuseY - 50 > c5.FuseY && c2.FuseY -50 <= c5.FuseY +50) {
+      c2.FuseY = c2.FuseY + 50;  
+      c5.FuseY = c5.FuseY - 50;
     }
-    if (FuseX + 22 >= FuseXDeux - 22 && FuseX - 22 <= FuseXDeux + 22 && FuseY + 50 < FuseYDeux && FuseY + 50 >= FuseYDeux - 50) {
-      FuseY = FuseY - 20;  
-      FuseYDeux = FuseYDeux + 50;
-    }
-      
+    if (c2.FuseX + 22 >= c5.FuseX - 22 && c2.FuseX - 22 <= c5.FuseX + 22 && c2.FuseY + 50 < c5.FuseY && c2.FuseY + 50 >= c5.FuseY - 50) {
+      c2.FuseY = c2.FuseY - 50;  
+      c5.FuseY = c5.FuseY + 50;
     }
 
-
-    if (FuseX -22 > FuseXDeux && FuseX - 22 <= FuseXDeux + 22 && FuseY + 50 >= FuseYDeux - 50 && FuseY - 50 <= FuseYDeux +50) {
-      FuseX = FuseX + 50;
-      FuseXDeux = FuseXDeux - 50;
+    if (c2.FuseX -22 > c5.FuseX && c2.FuseX - 22 <= c5.FuseX + 22 && c2.FuseY + 50 >= c5.FuseY - 50 && c2.FuseY - 50 <= c5.FuseY +50) {
+      c2.FuseX = c2.FuseX + 50;
+      c5.FuseX = c5.FuseX - 50;
     }
-    if (FuseX + 22 < FuseXDeux && FuseX + 22 >= FuseXDeux - 22 && FuseY + 50 >= FuseYDeux - 50 && FuseY - 50 <= FuseYDeux +50) {
-      FuseX = FuseX - 50;
-      FuseXDeux = FuseXDeux + 50;
+    if (c2.FuseX + 22 < c5.FuseX && c2.FuseX + 22 >= c5.FuseX - 22 && c2.FuseY + 50 >= c5.FuseY - 50 && c2.FuseY - 50 <= c5.FuseY +50) {
+      c2.FuseX = c2.FuseX - 50;
+      c5.FuseX = c5.FuseX + 50;
     }
     
     
@@ -216,7 +212,7 @@ class Planet {
       Boum.rewind();
     }
 
-    if (FuseY <= (Yplanet)+50 && FuseY >= (Yplanet)-50 && FuseX <= (Xplanet)+50 && FuseX >= (Xplanet)-50) {
+    if (c2.FuseY <= (Yplanet)+50 && c2.FuseY >= (Yplanet)-50 && c2.FuseX <= (Xplanet)+50 && c2.FuseX >= (Xplanet)-50) {
       end = true;
       if (end == true) {
         savedTime = millis();
@@ -282,7 +278,7 @@ class Planet {
       }
     }
 
-    if (FuseYDeux <= (Yplanet)+50 && FuseYDeux >= (Yplanet)-50 && FuseXDeux <= (Xplanet)+50 && FuseXDeux >= (Xplanet)-50) {
+    if (c5.FuseY <= (Yplanet)+50 && c5.FuseY >= (Yplanet)-50 && c5.FuseX <= (Xplanet)+50 && c5.FuseX >= (Xplanet)-50) {
       end = true;
       if (end == true) {
         savedTime = millis();

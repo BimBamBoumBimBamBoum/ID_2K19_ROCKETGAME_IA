@@ -17,14 +17,10 @@ class Tir {
   void animTir() {
     Ytir=Ytir-30;
     if ( Ytir <= (FuseY-height)) {
-      ooh.rewind();
-      //Xsmo = random(0,width);
-      //translate(random(int Xtir,0, width), 5);
+      //ooh.rewind();
     } else
     {
-      if (song.isPlaying() == false) {
-        ooh.play();
-      }
+        //ooh.play();
     }
   }
  
