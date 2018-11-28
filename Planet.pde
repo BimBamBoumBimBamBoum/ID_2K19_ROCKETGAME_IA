@@ -47,7 +47,7 @@ class Planet {
       Boum.rewind();
     }
 
-    if (Yplanet >= 100 && c5.FuseX >= 50 && c5.FuseX < width-50 && c5.FuseY < height -50 && c5.FuseY > 500) {
+    if (Yplanet >= 100) {
 
       if (  Xplanet >= (c5.FuseX+50) ) {
         if (c5.FuseX < width-50) {

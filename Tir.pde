@@ -16,11 +16,11 @@ class Tir {
 
   void animTir() {
     Ytir=Ytir-30;
-    if ( Ytir <= (FuseY-height)) {
-      //ooh.rewind();
+    if ( Ytir <= (FuseY)) {
+      tiSound.rewind();
     } else
     {
-        //ooh.play();
+      tiSound.play();
     }
   }
  

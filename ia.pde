@@ -88,7 +88,7 @@ int replayY = (height/2)+50;
 import ddf.minim.*;
 Minim minim;
 AudioPlayer song;
-AudioPlayer Piou;
+AudioPlayer tiSound;
 AudioPlayer Boum;
 AudioPlayer Oui;
 AudioPlayer Fin;
@@ -115,7 +115,7 @@ void setup() {
   
   // Initialisation Des Sons
   minim = new Minim(this);
-  Piou = minim.loadFile("pioud.wav");
+  tiSound = minim.loadFile("tir_sound.mp3");
   Boum = minim.loadFile("boum.wav");
   Oui = minim.loadFile("oui.wav");
   Fin = minim.loadFile("fin.wav");
@@ -313,7 +313,7 @@ void mousePressed() {
 
 
 void stop() {
-  Piou.close();
+  tiSound.close();
   Boum.close();
   Oui.close();
   minim.stop();
