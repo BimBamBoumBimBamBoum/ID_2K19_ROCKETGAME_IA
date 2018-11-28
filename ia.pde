@@ -6,11 +6,7 @@ Logo c6;
 
 boolean end = false;
 
-int deplaFuse = 0;
-int deplaFuseDeux = 0;
-
 boolean go_planet = false ;
-
 // Mouvement sur l'axe Y des planetes
 float my;
 
@@ -18,7 +14,11 @@ float my;
 int nb_star = (int)random(50, 100);
 Star [] tab_star = new Star[nb_star];
 
+// Tableaux de 10 planètes
+//int nbPlanet = 5;
+
 Planet[] lalunetombe = new Planet[1];
+
 
 boolean go_fume = false;
 Smoke[] smokesmoke = new Smoke[100];
@@ -46,9 +46,6 @@ int postirY=25;
 
 float tirX;
 float tirY;
-
-float tirXdeux;
-float tirYdeux;
 
 float logoX;
 float logoY;
@@ -87,12 +84,8 @@ int replayY = (height/2)+50;
 
 import ddf.minim.*;
 Minim minim;
-AudioPlayer song;
-AudioPlayer tiSound;
-AudioPlayer Boum;
-AudioPlayer Oui;
 AudioPlayer Fin;
-AudioPlayer soundMaxime;
+AudioPlayer Back;
 
 int savedTime;
 int totalTime = 5000;
@@ -103,23 +96,17 @@ int logoTime;
 int TimerLogo;
 
 
-
 void setup() {
   
   logoTime = millis();
 
   savedTime = millis();
-  
+
   start = millis();
   time = 0 ;
-  
-  // Initialisation Des Sons
   minim = new Minim(this);
-  tiSound = minim.loadFile("tir_sound.mp3");
-  Boum = minim.loadFile("boum.wav");
-  Oui = minim.loadFile("oui.wav");
+  Back = minim.loadFile("soundMaximeQuatre.mp3");
   Fin = minim.loadFile("fin.wav");
-  soundMaxime = minim.loadFile("soundMaximeQuatre.mp3");
 
   // Taille
   fullScreen();
@@ -144,6 +131,7 @@ void setup() {
   c2 = new Fusee();
   c5 = new Fusee();
   c6 = new Logo();
+  //c4 = new Planet("Lune.svg", random(50, 450), -150, 1);
 
   // Boucle creation etoiles
   for (int i = 0; i< tab_star.length; i++) {
@@ -155,13 +143,8 @@ void setup() {
     lalunetombe[i] = new Planet("Lune.svg", random(50, (width-50)), random(0, -500), 1);
   }
 
-  c2.FuseX=0+width/4*1;
-  c2.FuseY=height - 100;
-  c2.dessinerFusee(c2.FuseX,c2.FuseY);
-  
-  c5.FuseX=0+width/4*3;
-  c5.FuseY=height - 100;
-  c5.dessinerFusee(c5.FuseX, c5.FuseY);
+  //lalunetombe[1] = new Planet("Espace.svg",50,0,24);
+
 
   for (int i = 0; i< smokesmoke.length; i++) {
     smokesmoke[i] = new Smoke("Espace.svg", random(0, width), random(0, height), 1);
@@ -175,22 +158,33 @@ void setup() {
   }
 
   for (int i = 0; i< tirletsgoDeux.length; i++) {
-    tirletsgoDeux[i] = new TirDeux("tir.svg", c2.FuseX, c2.FuseY,5);
+    tirletsgoDeux[i] = new TirDeux("tir.svg", 0, testPosDeux, 5);
     testPosDeux = YtirDeux - 1;
   }
+  
+  c2.FuseX=0+width/4*1;
+  c2.FuseY=height - 100;
+  c2.dessinerFusee(c2.FuseX,c2.FuseY);
+  
+  c5.FuseX=0+width/4*3;
+  c5.FuseY=height - 100;
+  c5.dessinerFusee(c5.FuseX, c5.FuseY);
+  
 }
 
 
 
 void draw() {
 
+  // Calculate how much time has passed
   int passedTime = millis() - savedTime;
 
-  if (soundMaxime.isPlaying()==false) {
-    soundMaxime.rewind();
-    soundMaxime.play();
+  Back.play();
+
+  if (Back.isPlaying()==false) {
+    Back.rewind();
+    Back.play();
   }
-  
   if (end != true) {
     fill(255);
     textSize(35); 
@@ -198,9 +192,10 @@ void draw() {
     text("Flèches directionnelles pour se déplacer.", width/2, height/2);
     text("Vous contrôlez la fusée rouge.", width/2, (height/2)+50);
   }
-  
-  // Au bout de 5000ms :
+
+  // Has five seconds passed?
   if (passedTime > totalTime) {
+    
     
     TimerLogo = millis()-logoTime;
     println(TimerLogo);
@@ -213,12 +208,14 @@ void draw() {
 
     // Pas de curseur
     noCursor();
-
+    
     // Creation des halos
-    c1.dessinerCercle();
+    c1.dessinerCercle(); 
     
     fill(223, 12, 27);
     ellipse(mouseX,mouseY,20,20);
+
+     
 
     // Boucle pour animer les etoiles et les dessiner
     for (int i = 0; i< tab_star.length; i++) {
@@ -236,20 +233,22 @@ void draw() {
 
     if (score == maxScore) {
       lalunetombe = (Planet[]) append(lalunetombe, new Planet("Lune.svg", random(0, width), random(-50, -500), 1));
-      Oui.play();
+      //Oui.play();
       maxScore += 10;
-      Oui.rewind();
+      //Oui.rewind();
     }
     
     if (scoreDeux == maxScoreDeux) {
       lalunetombe = (Planet[]) append(lalunetombe, new Planet("Lune.svg", random(0, width), random(-50, -500), 1));
-      Oui.play();
+      //Oui.play();
       maxScoreDeux += 10;
-      Oui.rewind();
+      //Oui.rewind();
     }
 
     if (go_fume==true) {
+
       for (int m = 0; m < smokesmoke.length; m++) {
+
         smokesmoke[m].animElipse();
         smokesmoke[m].dessinerElipse();
       }
@@ -262,18 +261,18 @@ void draw() {
         tirletsgo[m].Ytir=c2.FuseY;
         tirletsgo[m].Xtir=c2.FuseX;
       }
-    };
+    }
+    
     for (int m = 0; m < tirletsgoDeux.length; m++) {
       tirletsgoDeux[m].animTirDeux();
       tirletsgoDeux[m].dessinerTirDeux();
     }
 
     // Affichage de la fusee
-    c2.dessinerFusee(c2.FuseX,c2.FuseY);
+     c2.dessinerFusee(c2.FuseX,c2.FuseY);
     c2.animFusee();
     
     c5.dessinerFusee(c5.FuseX, c5.FuseY);
-
     
     c6.dessinerLogo();
     c6.animerLogo();
@@ -294,28 +293,23 @@ void draw() {
 }
 
 
-
 void mousePressed() {
   if (mouseX >= (replayX-100) && mouseX <= (replayX+100) && mouseY >= (replayY-25) && mouseY <= (replayY+25)) {
     end = false;
-    // Reinitialisation des scores
     score = 0;
     scoreDeux = 0;
     maxScore = 10;
     maxScoreDeux = 10;
-    // Reinitialisation du nombre de planetes
+    
     lalunetombe = new Planet[1];
     setup();
     draw();
   }
 }
 
-
-
 void stop() {
-  tiSound.close();
-  Boum.close();
-  Oui.close();
+  Back.close();
+  Fin.close();
   minim.stop();
   super.stop();
 }

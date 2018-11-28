@@ -17,10 +17,10 @@ class Tir {
   void animTir() {
     Ytir=Ytir-30;
     if ( Ytir <= (FuseY)) {
-      tiSound.rewind();
+      //tiSound.rewind();
     } else
     {
-      tiSound.play();
+      //tiSound.play();
     }
   }
  

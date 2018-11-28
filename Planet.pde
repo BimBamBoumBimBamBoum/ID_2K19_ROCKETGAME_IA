@@ -43,8 +43,8 @@ class Planet {
       Yplanet = -200;
       XtirDeux = 5000;
       score++;
-      Boum.play();
-      Boum.rewind();
+      //Boum.play();
+      //Boum.rewind();
     }
 
     if (Yplanet >= 100) {
@@ -142,8 +142,8 @@ class Planet {
 
       scoreDeux += 5;
 
-      Boum.play();
-      Boum.rewind();
+      //Boum.play();
+      //Boum.rewind();
     }
 
     if (c5.FuseY <= (logoY)+50 && c5.FuseY >= (logoY)-50 && c5.FuseX <= (logoX)+50 && c5.FuseX >= (logoX)-50) {
@@ -155,8 +155,8 @@ class Planet {
       score += 5;
 
 
-      Boum.play();
-      Boum.rewind();
+      //Boum.play();
+      //Boum.rewind();
     }
 
     if (c2.FuseY <= (Yplanet)+50 && c2.FuseY >= (Yplanet)-50 && c2.FuseX <= (Xplanet)+50 && c2.FuseX >= (Xplanet)-50) {
