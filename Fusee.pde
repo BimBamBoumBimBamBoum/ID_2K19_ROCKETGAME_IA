@@ -39,7 +39,7 @@ class Fusee {
     randomc = (int)random(4);
 
     // Affichage fusee
-    fill(223, 12, 27);
+    //fill(223, 12, 27);
     shape(corps, FuseX, FuseY, taille*fuse.getWidth(), taille*fuse.getHeight());
 
     if (random == 1) {

@@ -34,8 +34,8 @@ class Planet {
       Yplanet = -200;
       Xtir = 5000;
       score++;
-      //Boum.play();
-      //Boum.rewind();
+      PlanetDestroy.play();
+      PlanetDestroy.rewind();
     }
 
     if (YtirDeux <= (Yplanet)+50 && YtirDeux >= (Yplanet)-50 && XtirDeux <= (Xplanet)+50 && XtirDeux >= (Xplanet)-50) {
@@ -43,8 +43,8 @@ class Planet {
       Yplanet = -200;
       XtirDeux = 5000;
       score++;
-      //Boum.play();
-      //Boum.rewind();
+      PlanetDestroy.play();
+      PlanetDestroy.rewind();
     }
 
     if (Yplanet >= 100) {
@@ -93,19 +93,27 @@ class Planet {
     if (c2.FuseX + 22 >= c5.FuseX - 22 && c2.FuseX - 22 <= c5.FuseX + 22 && c2.FuseY - 50 > c5.FuseY && c2.FuseY -50 <= c5.FuseY +50) {
       c2.FuseY = c2.FuseY + 50;  
       c5.FuseY = c5.FuseY - 50;
+      ColiFusee.play();
+      ColiFusee.rewind();
     }
     if (c2.FuseX + 22 >= c5.FuseX - 22 && c2.FuseX - 22 <= c5.FuseX + 22 && c2.FuseY + 50 < c5.FuseY && c2.FuseY + 50 >= c5.FuseY - 50) {
       c2.FuseY = c2.FuseY - 50;  
       c5.FuseY = c5.FuseY + 50;
+      ColiFusee.play();
+      ColiFusee.rewind();
     }
 
     if (c2.FuseX -22 > c5.FuseX && c2.FuseX - 22 <= c5.FuseX + 22 && c2.FuseY + 50 >= c5.FuseY - 50 && c2.FuseY - 50 <= c5.FuseY +50) {
       c2.FuseX = c2.FuseX + 50;
       c5.FuseX = c5.FuseX - 50;
+      ColiFusee.play();
+      ColiFusee.rewind();
     }
     if (c2.FuseX + 22 < c5.FuseX && c2.FuseX + 22 >= c5.FuseX - 22 && c2.FuseY + 50 >= c5.FuseY - 50 && c2.FuseY - 50 <= c5.FuseY +50) {
       c2.FuseX = c2.FuseX - 50;
       c5.FuseX = c5.FuseX + 50;
+      ColiFusee.play();
+      ColiFusee.rewind();
     }
 
 
@@ -142,8 +150,8 @@ class Planet {
 
       scoreDeux += 5;
 
-      //Boum.play();
-      //Boum.rewind();
+      Bonus.play();
+      Bonus.rewind();
     }
 
     if (c5.FuseY <= (logoY)+50 && c5.FuseY >= (logoY)-50 && c5.FuseX <= (logoX)+50 && c5.FuseX >= (logoX)-50) {
@@ -155,8 +163,8 @@ class Planet {
       score += 5;
 
 
-      //Boum.play();
-      //Boum.rewind();
+      Bonus.play();
+      Bonus.rewind();
     }
 
     if (c2.FuseY <= (Yplanet)+50 && c2.FuseY >= (Yplanet)-50 && c2.FuseX <= (Xplanet)+50 && c2.FuseX >= (Xplanet)-50) {
@@ -164,7 +172,7 @@ class Planet {
       if (end == true) {
         savedTime = millis();
         cursor();
-        Fin.play();
+        DestroyFusee.play();
         fill(29, 29, 27);
         rect(width/2, height/2, width, height);
         fill(255);
@@ -186,7 +194,7 @@ class Planet {
       if (end == true) {
         savedTime = millis();
         cursor();
-        Fin.play();
+        Win.play();
         fill(29, 29, 27);
         rect(width/2, height/2, width, height);
         fill(255);
@@ -208,7 +216,7 @@ class Planet {
       if (end == true) {
         savedTime = millis();
         cursor();
-        Fin.play();
+        Win.play();
         fill(29, 29, 27);
         rect(width/2, height/2, width, height);
         fill(223, 12, 27);
@@ -230,7 +238,7 @@ class Planet {
       if (end == true) {
         savedTime = millis();
         cursor();
-        Fin.play();
+        DestroyFusee.play();
         fill(29, 29, 27);
         rect(width/2, height/2, width, height);
         fill(223, 12, 27);

@@ -88,8 +88,14 @@ int replayY = (height/2)+50;
 
 import ddf.minim.*;
 Minim minim;
-AudioPlayer Fin;
-AudioPlayer Back;
+AudioPlayer Background;
+AudioPlayer TirOne;
+AudioPlayer TirTwo;
+AudioPlayer PlanetDestroy;
+AudioPlayer ColiFusee;
+AudioPlayer DestroyFusee;
+AudioPlayer Bonus;
+AudioPlayer Win;
 
 int savedTime;
 int totalTime = 5000;
@@ -110,8 +116,14 @@ void setup() {
   start = millis();
   time = 0 ;
   minim = new Minim(this);
-  Back = minim.loadFile("soundMaximeQuatre.mp3");
-  Fin = minim.loadFile("fin.wav");
+  TirOne = minim.loadFile("tir_1.mp3");
+  TirTwo = minim.loadFile("tir_2.mp3");
+  Background = minim.loadFile("soundMaximeTwo.mp3");
+  PlanetDestroy = minim.loadFile("tir-planete.mp3");
+  ColiFusee = minim.loadFile("collisions_fusee.mp3");
+  DestroyFusee = minim.loadFile("crash-fusee.mp3");
+  Bonus = minim.loadFile("bonus.mp3");
+  Win = minim.loadFile("win.mp3");
 
   // Taille
   fullScreen();
@@ -184,11 +196,9 @@ void draw() {
   // Calculate how much time has passed
   int passedTime = millis() - savedTime;
 
-  Back.play();
-
-  if (Back.isPlaying()==false) {
-    Back.rewind();
-    Back.play();
+  if (Background.isPlaying()==false) {
+    Background.rewind();
+    Background.play();
   }
   if (end != true) {
     fill(255);
@@ -276,9 +286,11 @@ void draw() {
     // Affichage de la fusee
     //c2.FuseX=(int)gazeTrack.getGazeX();
     //c2.FuseY=(int)gazeTrack.getGazeY();
+    fill(223, 12, 27);
     c2.dessinerFusee(c2.FuseX,c2.FuseY);
     c2.animFusee();
     
+    fill(255);
     c5.dessinerFusee(c5.FuseX, c5.FuseY);
     
     c6.dessinerLogo();
@@ -315,8 +327,9 @@ void mousePressed() {
 }
 
 void stop() {
-  Back.close();
-  Fin.close();
+  Background.close();
+  TirOne.close();
+  TirTwo.close();
   minim.stop();
   super.stop();
 }
