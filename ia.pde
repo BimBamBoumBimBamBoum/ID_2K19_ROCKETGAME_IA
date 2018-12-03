@@ -274,8 +274,8 @@ void draw() {
     }
 
     // Affichage de la fusee
-    c2.FuseX=(int)gazeTrack.getGazeX();
-    c2.FuseY=(int)gazeTrack.getGazeY();
+    //c2.FuseX=(int)gazeTrack.getGazeX();
+    //c2.FuseY=(int)gazeTrack.getGazeY();
     c2.dessinerFusee(c2.FuseX,c2.FuseY);
     c2.animFusee();
     
