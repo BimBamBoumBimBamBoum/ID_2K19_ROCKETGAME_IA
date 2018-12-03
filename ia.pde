@@ -4,6 +4,10 @@ cercle c1;
 Etoiles c3;
 Logo c6;
 
+import gazetrack.*;
+
+GazeTrack gazeTrack;
+
 boolean end = false;
 
 boolean go_planet = false ;
@@ -97,7 +101,8 @@ int TimerLogo;
 
 
 void setup() {
-  
+    
+  gazeTrack = new GazeTrack(this);
   logoTime = millis();
 
   savedTime = millis();
