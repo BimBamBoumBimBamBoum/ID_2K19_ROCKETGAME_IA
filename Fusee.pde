@@ -64,21 +64,21 @@ class Fusee {
   // Correction deplacements 
   void animFusee() { 
 
-   if (gazeTrack.getGazeX() > c2.FuseX && c2.FuseX < width-50){
+   if (gazeTrack.getGazeX() > FuseX && FuseX < width-50){
       //droite = true;
-      c2.FuseX += 10;
+      FuseX += 10;
     }
-    if (gazeTrack.getGazeX() < c2.FuseX && c2.FuseX > 50){
+    if (gazeTrack.getGazeX() < FuseX && FuseX > 50){
       //gauche = true;
-      c2.FuseX -= 10;
+      FuseX -= 10;
     }
-    if (gazeTrack.getGazeY() > c2.FuseY && c2.FuseY < height-50){
+    if (gazeTrack.getGazeY() > FuseY && FuseY < height-50){
       //bas = true;
-      c2.FuseY += 10;
+      FuseY += 10;
     }
-    if (gazeTrack.getGazeY() < c2.FuseY && c2.FuseY > 500){
+    if (gazeTrack.getGazeY() < FuseY && FuseY > 500){
       //haut = true;
-      c2.FuseY -= 10;
+      FuseY -= 10;
     }
   }
 }
